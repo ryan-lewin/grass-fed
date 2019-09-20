@@ -17,4 +17,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('Customers', 'CustomersController');
+
+Route::get('Restaurant', 'RestaurantConrtoller');
+
+Route::get('Dishes', 'DishesController');
+
 Route::get('/home', 'HomeController@index')->name('home');
