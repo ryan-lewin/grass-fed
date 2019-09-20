@@ -3,9 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
+use App\Dish;
 
 class CustomerController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('auth', ['except' => ['index', 'show']]);
+    }
+   
+    
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +21,8 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        //
+        $restaurants = User::where('role_name', '=', 'restaurant')->get();
+        return view('customer.index', compact('restaurants'));
     }
 
     /**
@@ -45,7 +54,9 @@ class CustomerController extends Controller
      */
     public function show($id)
     {
-        //
+        $restaurant = User::where('id', '=', $id)->get();
+        $dishes = Dish::where('restaurant_id', '=', $id)->get();
+        return view('restaurant.dishes', compact('restaurant', 'dishes'));
     }
 
     /**

@@ -3,9 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\User;
+use App\Dish;
 
 class DishesController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('auth', ['except' => ['index', 'show']]);
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -23,7 +31,7 @@ class DishesController extends Controller
      */
     public function create()
     {
-        //
+        return view('restaurant.new_dish');
     }
 
     /**
@@ -34,7 +42,19 @@ class DishesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        request()->validate([
+            'name' => 'required',
+            'price' => 'required'
+        ]);
+        // $name = request('name');
+        // $price = request('price');
+        // $resaurant_id = Auth::user()->id;
+        $dish = new Dish;
+        $dish->name = $request->input('name');
+        $dish->price = $request->input('price');
+        $dish->restaurant_id = Auth::user()->id;
+        $dish->save();
+        return back();
     }
 
     /**
@@ -45,7 +65,9 @@ class DishesController extends Controller
      */
     public function show($id)
     {
-        //
+        $restaurant = User::where('id', '=', $id)->get();
+        $dishes = Dish::where('restaurant_id', '=', $id)->get();
+        return view('restaurant.dishes', compact('restaurant', 'dishes'));
     }
 
     /**

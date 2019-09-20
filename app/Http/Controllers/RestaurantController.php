@@ -8,6 +8,11 @@ use App\Dish;
 
 class RestaurantController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('auth', ['except' => ['index', 'show']]);
+    }
+   
     /**
      * Display a listing of the resource.
      *
@@ -26,7 +31,7 @@ class RestaurantController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -50,7 +55,6 @@ class RestaurantController extends Controller
     {
         $restaurant = User::where('id', '=', $id)->get();
         $dishes = Dish::where('restaurant_id', '=', $id)->get();
-        // $dishes = Dish::all();
         return view('restaurant.dishes', compact('restaurant', 'dishes'));
     }
 

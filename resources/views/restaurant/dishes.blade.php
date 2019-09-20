@@ -6,7 +6,9 @@
     @foreach ($dishes as $dish)
         <p>{{ $dish->name }}</p>
         <p>${{ $dish->price }}</p>
-        <br>
+        @auth
+            <button>Add to cart</button>
+        @endauth
     @endforeach
 
 @endsection
