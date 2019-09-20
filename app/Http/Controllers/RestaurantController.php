@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
+use App\Dish;
 
 class RestaurantController extends Controller
 {
@@ -13,7 +15,8 @@ class RestaurantController extends Controller
      */
     public function index()
     {
-        //
+        $restaurants = User::where('role_name', '=', 'restaurant')->get();
+        return view('restaurant.index', compact('restaurants'));
     }
 
     /**
@@ -45,7 +48,10 @@ class RestaurantController extends Controller
      */
     public function show($id)
     {
-        //
+        $restaurant = User::where('id', '=', $id)->get();
+        $dishes = Dish::where('restaurant_id', '=', $id)->get();
+        // $dishes = Dish::all();
+        return view('restaurant.dishes', compact('restaurant', 'dishes'));
     }
 
     /**

@@ -14,22 +14,22 @@ class DishesTableSeeder extends Seeder
         DB::table('dishes')->insert([
             'name' => 'Cauliflower Wings',
             'price' => 14.00,
-            'restaurant_id' => 1
+            'restaurant_id' => 3
         ]);
         DB::table('dishes')->insert([
             'name' => 'Eggplant Parmigiana',
             'price' => 22.00,
-            'restaurant_id' => 1
+            'restaurant_id' => 3
         ]);
         DB::table('dishes')->insert([
             'name' => 'Brunch Burger',
             'price' => 13.00,
-            'restaurant_id' => 2
+            'restaurant_id' => 4
         ]);
         DB::table('dishes')->insert([
             'name' => '(Not) Salmon on Rye',
             'price' => 13.00,
-            'restaurant_id' => 2
+            'restaurant_id' => 4
         ]);
     }
 }
