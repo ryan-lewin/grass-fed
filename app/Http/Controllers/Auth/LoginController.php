@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\User;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -25,8 +28,21 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    // protected $redirectTo = '/home';
 
+    /**
+     * Check user's role and redirect user based on their role
+     * @return 
+     */
+    public function redirectTo()
+    {
+        $role = Auth::user()->role_name;
+        $id = Auth::user()->id;
+        if($role == 'restaurant'){
+            return '/restaurant-dashboard/' . $id;
+        }
+    }
+    
     /**
      * Create a new controller instance.
      *

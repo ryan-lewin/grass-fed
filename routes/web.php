@@ -23,4 +23,7 @@ Route::resource('restaurant', 'RestaurantController');
 
 Route::resource('dishes', 'DishesController');
 
+Route::get('/restaurant-dashboard/{id}', 'RestaurantUserController@dashboard');
+Route::get('/ourDishes/{id}', 'RestaurantUserController@ourDishes');
+
 Route::get('/home', 'HomeController@index')->name('home');

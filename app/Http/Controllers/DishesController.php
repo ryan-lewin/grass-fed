@@ -46,15 +46,12 @@ class DishesController extends Controller
             'name' => 'required',
             'price' => 'required'
         ]);
-        // $name = request('name');
-        // $price = request('price');
-        // $resaurant_id = Auth::user()->id;
         $dish = new Dish;
         $dish->name = $request->input('name');
         $dish->price = $request->input('price');
         $dish->restaurant_id = Auth::user()->id;
         $dish->save();
-        return back();
+        return redirect('/ourDishes/' .Auth::user()->id);
     }
 
     /**
@@ -67,7 +64,7 @@ class DishesController extends Controller
     {
         $restaurant = User::where('id', '=', $id)->get();
         $dishes = Dish::where('restaurant_id', '=', $id)->get();
-        return view('restaurant.dishes', compact('restaurant', 'dishes'));
+        return view('general.dishes', compact('restaurant', 'dishes'));
     }
 
     /**
@@ -78,7 +75,7 @@ class DishesController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('restaurant.update_dish');
     }
 
     /**
@@ -101,6 +98,8 @@ class DishesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $dish = Dish::find($id);
+        $dish->delete($dish->id);
+        return back();
     }
 }

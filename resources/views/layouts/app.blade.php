@@ -36,7 +36,7 @@
                     <ul class="navbar-nav mr-auto">
 
                     </ul>
-
+                    
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
@@ -52,7 +52,17 @@
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
+                        @else 
+                        @if(Auth::user()->role_name == 'restaurant')
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url('/dishes/create') }}">Add Dish</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url('/ourDishes', Auth::user()->id) }}">Our Dishes</a>
+                            </li>
                         @else
+                        {{-- /ourDishes/{{ Auth::user()->id) }} --}}
+                        @endif
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
