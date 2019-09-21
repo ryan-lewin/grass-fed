@@ -75,7 +75,8 @@ class DishesController extends Controller
      */
     public function edit($id)
     {
-        return view('restaurant.update_dish');
+        $dish = Dish::find($id);
+        return view('restaurant.update_dish', compact('dish'));
     }
 
     /**
@@ -87,7 +88,15 @@ class DishesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        request()->validate([
+            'name' => 'required',
+            'price' => 'required'
+        ]);
+        $dish = Dish::find($id);
+        $dish->name = $request->input('name');
+        $dish->price = $request->input('price');
+        $dish->save();
+        return redirect('/ourDishes/' .Auth::user()->id);
     }
 
     /**
