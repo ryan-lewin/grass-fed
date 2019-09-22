@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Order;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -13,7 +14,10 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        
+        // $order = Order::all();
+        $order = Order::all()->where('restaurant_id', 4);
+        dd($order);
     }
 
     /**
@@ -45,7 +49,9 @@ class OrderController extends Controller
      */
     public function show($id)
     {
-        //
+        // dd(Order::all()->customer());
+        $orders = Order::all()->where('restaurant_id', $id);
+        return view('restaurant.orders', compact('orders'));
     }
 
     /**

@@ -6,9 +6,11 @@
     @foreach ($dishes as $dish)
         <p>{{ $dish->name }}</p>
         <p>${{ $dish->price }}</p>
-        @if(Auth::user()->role_name == 'customer')
-            <button>Add to cart</button>
-        @endif
+        @auth
+            @if(Auth::user()->role_name == 'customer')
+                <button>Add to cart</button>
+            @endif
+        @endauth
     @endforeach
 
 @endsection

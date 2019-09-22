@@ -41,6 +41,7 @@ class LoginController extends Controller
         if($role == 'restaurant'){
             return '/restaurant-dashboard/' . $id;
         }
+        return 'restaurant';
     }
     
     /**

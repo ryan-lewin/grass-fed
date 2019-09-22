@@ -55,6 +55,9 @@
                         @else 
                         @if(Auth::user()->role_name == 'restaurant')
                             <li class="nav-item">
+                                <a class="nav-link" href="{{ url('order', Auth::user()->id) }}">Orders</a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link" href="{{ url('/dishes/create') }}">Add Dish</a>
                             </li>
                             <li class="nav-item">
