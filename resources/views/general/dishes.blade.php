@@ -8,7 +8,7 @@
         <p>${{ $dish->price }}</p>
         @auth
             @if(Auth::user()->role_name == 'customer')
-                <button>Add to cart</button>
+                <a href="{{ url('addToCart/'.$dish->id) }}">Add to cart</a>
             @endif
         @endauth
     @endforeach

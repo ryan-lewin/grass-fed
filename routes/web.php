@@ -27,5 +27,8 @@ Route::resource('order', 'OrderController');
 
 Route::get('/restaurant-dashboard/{id}', 'RestaurantUserController@dashboard');
 Route::get('/ourDishes/{id}', 'RestaurantUserController@ourDishes');
+Route::get('/cart', 'DishesController@cart');
+Route::get('/addToCart/{id}', 'DishesController@addToCart');
+Route::delete('/removeFromCart/{id}', 'DishesController@removeFromCart');
 
 Route::get('/home', 'HomeController@index')->name('home');
