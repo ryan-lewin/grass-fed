@@ -112,39 +112,39 @@ class DishesController extends Controller
         return back();
     }
 
-    public function cart()
-    {
-        return view('customer.cart');
-    }
+    // public function cart()
+    // {
+    //     return view('customer.cart');
+    // }
 
-    public function addToCart($id)
-    {
-        $dish = Dish::find($id);
-        $cart = session()->get('cart');
-        if(!$cart){
-            $cart = [
-                $id => [
-                    'name' => $dish->name,
-                    'quantity' => 1,
-                    'price' => $dish->price
-                ]
-            ];
-            session()->put('cart', $cart);
-            return redirect()->back();
-        }
-        if(isset($cart[$id])){
-            $cart[$id]['quantity']++;
-            session()->put('cart', $cart);
-            return redirect()->back();
-        }
-        $cart[$id] = [
-                'name' => $dish->name,
-                'quantity' => 1,
-                'price' => $dish->price
-        ];
-        session()->put('cart', $cart);
-        return redirect()->back();        
-    }
+    // public function addToCart($id)
+    // {
+    //     $dish = Dish::find($id);
+    //     $cart = session()->get('cart');
+    //     if(!$cart){
+    //         $cart = [
+    //             $id => [
+    //                 'name' => $dish->name,
+    //                 'quantity' => 1,
+    //                 'price' => $dish->price
+    //             ]
+    //         ];
+    //         session()->put('cart', $cart);
+    //         return redirect()->back();
+    //     }
+    //     if(isset($cart[$id])){
+    //         $cart[$id]['quantity']++;
+    //         session()->put('cart', $cart);
+    //         return redirect()->back();
+    //     }
+    //     $cart[$id] = [
+    //             'name' => $dish->name,
+    //             'quantity' => 1,
+    //             'price' => $dish->price
+    //     ];
+    //     session()->put('cart', $cart);
+    //     return redirect()->back();        
+    // }
 
     // public function updateCart($quantity)
     // {
@@ -157,19 +157,19 @@ class DishesController extends Controller
     //         session()->flash('success', 'Cart updated successfully');
     // }
 
-    public function removeFromCart($id){
-        if($id) {
-            $cart = session()->get('cart');
-            if(isset($cart[$id])) {
-                if($cart[$id]['quantity'] > 1){
-                    $cart[$id]['quantity']--;
-                    session()->put('cart', $cart);
-                } else{
-                    unset($cart[$id]);
-                    session()->put('cart', $cart);
-                }
-            }
-            return redirect()->back(); 
-        }
-    }
+    // public function removeFromCart($id){
+    //     if($id) {
+    //         $cart = session()->get('cart');
+    //         if(isset($cart[$id])) {
+    //             if($cart[$id]['quantity'] > 1){
+    //                 $cart[$id]['quantity']--;
+    //                 session()->put('cart', $cart);
+    //             } else{
+    //                 unset($cart[$id]);
+    //                 session()->put('cart', $cart);
+    //             }
+    //         }
+    //         return redirect()->back(); 
+    //     }
+    // }
 }
