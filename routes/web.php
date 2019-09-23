@@ -30,7 +30,8 @@ Route::get('/ourDishes/{id}', 'RestaurantUserController@ourDishes');
 
 Route::get('/cart', 'CartController@cart');
 Route::get('/addToCart/{id}', 'CartController@addToCart');
-Route::get('/purchaseCart', 'CartController@purchaseCart');
+Route::get('/purchaseCart/{total}', 'CartController@purchaseCart');
+// Route::get('/purchaseCart/{$total}', 'CartController@purchaseCart');
 Route::delete('/removeFromCart/{id}', 'CartController@removeFromCart');
 
 Route::get('/home', 'HomeController@index')->name('home');

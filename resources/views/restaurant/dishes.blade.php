@@ -6,6 +6,8 @@
 
         @foreach ($dishes as $dish)
             <p>{{ $dish->name }}</p>
+            <img src="{{ asset('storage/'.$dish->image) }}" alt="product image" >
+            <p>{{ $dish->description }}</p>
             <p>${{ $dish->price }}</p>
             <a href="/dishes/{{ $dish->id }}/edit">Update</a>
             <form method="POST" action="{{ url('dishes', $dish->id) }}">

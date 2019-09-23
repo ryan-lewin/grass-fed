@@ -5,7 +5,6 @@
     @if (session('cart'))
         <?php $total = 0 ?>
         <?php $test = serialize(session('cart')) ?>
-        {{-- {{dd($test)}} --}}
 
         @foreach (session('cart') as $id => $dish)
             <?php $total += $dish['price'] * $dish['quantity'] ?>
@@ -18,6 +17,6 @@
             </form>
         @endforeach
         <h3>Total Price ${{ $total }}</h3>
-        <a href="{{ url('purchaseCart') }}">Purchase</a>
+        <a href="{{ url('purchaseCart', $total) }}">Purchase</a>
     @endif
 @endsection

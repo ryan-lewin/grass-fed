@@ -66,22 +66,11 @@ class CartController extends Controller
         }
     }
 
-    // public function updateCart($quantity)
-    // {
-    //         $cart = session()->get('cart');
- 
-    //         $cart[$request->id]["quantity"] = $request->quantity;
- 
-    //         session()->put('cart', $cart);
- 
-    //         session()->flash('success', 'Cart updated successfully');
-    // }
-
-    public function purchaseCart(){
+    public function purchaseCart($total){
         $cart = session()->get('cart');
-
         $order = new Order;
         $order->order_details = serialize(session('cart'));
+        $order->price = $total;
         $order->customer_id = Auth::user()->id;
         $order->restaurant_id = reset($cart)['restaurant_id'];
         $order->save();
@@ -98,25 +87,3 @@ class CartController extends Controller
         return redirect()->back();
     }
 }
-
-// 'name' => $dish->name,
-// 'quantity' => 1,
-// 'price' => $dish->price,
-// 'dish_id' => $dish->id,
-// 'restaurant_id' => $dish->restaurant_id
-
-// $table->increments('order_dish_id');
-// $table->float('price');
-// $table->integer('order_id');
-// $table->integer('dish_id');
-// $table->integer('quantity');
-// $table->integer('customer_id');
-// $table->integer('restaurant_id');
-// $table->timestamps();
-
-// $dish = new Dish;
-// $dish->name = $request->input('name');
-// $dish->price = $request->input('price');
-// $dish->restaurant_id = Auth::user()->id;
-// $dish->save();
-// return redirect('/ourDishes/' .Auth::user()->id);

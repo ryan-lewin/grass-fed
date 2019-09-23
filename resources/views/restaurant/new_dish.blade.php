@@ -3,7 +3,8 @@
 @section('content')
     @if(Auth::user()->role_name == 'restaurant')
         <h1>Add a new dish</h1>
-        <form method="POST" action="{{ url('dishes') }}">
+        {{-- <form method="POST" action="{{ url('dishes') }}" enctype="multipart/form-data"> --}}
+        <form method="POST" action="/dishes" enctype="multipart/form-data">
             @csrf
             <div>
                 <label for="name">Name of dish</label>
@@ -13,7 +14,15 @@
                 <label for="price">Price</label>
                 <input name="price" type="text">
             </div>
-            {{-- <input name="restaurant_id" type="hidden" value="{{ Auth::user()->id }}"> --}}
+            <div>
+                <label for="description">Description</label>
+                <input name="description" type="text">
+            </div>
+            <div>
+                {{-- <label for="image">Image</label> --}}
+                {{-- <input type="file" name="image"> --}}
+                <p><input type="file" name="image"></p>
+            </div>
             <button type="submit">Add to menu</button>
         </form>
     @else

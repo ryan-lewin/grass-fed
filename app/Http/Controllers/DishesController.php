@@ -43,16 +43,23 @@ class DishesController extends Controller
     public function store(Request $request)
     {
         request()->validate([
-            'name' => 'required',
-            'price' => 'required'
+            'name' => 'required|unique:dishes',
+            'price' => 'required',
+            'description' => 'required',
+            'image' => 'required'
         ]);
+        $image_store = request()->file('image')->store('images', 'public');
         $dish = new Dish;
         $dish->name = $request->input('name');
         $dish->price = $request->input('price');
         $dish->restaurant_id = Auth::user()->id;
+        $dish->description = $request->input('description');
+        $dish->image = $image_store;
         $dish->save();
         return redirect('/ourDishes/' .Auth::user()->id);
     }
+
+    // 'address'=>'unique:user_addresses,name,'.$user->id.',user_id'
 
     /**
      * Display the specified resource.
