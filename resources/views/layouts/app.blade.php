@@ -60,11 +60,14 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ url('order', Auth::user()->id) }}">Orders</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ url('/dishes/create') }}">Add Dish</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ url('/ourDishes', Auth::user()->id) }}">Our Dishes</a>
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    Dishes <span class="caret"></span>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ url('/ourDishes', Auth::user()->id) }}">Our Dishes</a>
+                                    <a class="dropdown-item" href="{{ url('/dishes/create') }}">Add Dish</a>
+                                </div>
                             </li>
                         @else
                         {{-- /ourDishes/{{ Auth::user()->id) }} --}}

@@ -16,6 +16,7 @@
                 <button type="submit">Delete</button>
             </form>
         @endforeach
+        {{ $dishes->links() }}
     @else
         <h1>Whoops! Looks like you aren't authorised to be here...</h1>
     @endif

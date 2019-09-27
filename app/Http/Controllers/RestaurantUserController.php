@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use App\Dish;
+use App\Order;
 use Illuminate\Http\Request;
 
 class RestaurantUserController extends Controller
@@ -11,7 +12,7 @@ class RestaurantUserController extends Controller
     public function ourDishes($id)
     {
         $restaurant = User::where('id', '=', $id)->get();
-        $dishes = Dish::where('restaurant_id', '=', $id)->get();
+        $dishes = Dish::where('restaurant_id', '=', $id)->paginate(5);
         return view('restaurant.dishes', compact('restaurant', 'dishes'));
     }
 
@@ -19,7 +20,12 @@ class RestaurantUserController extends Controller
     {
         $restaurant = User::where('id', '=', $id)->get();
         $dishes = Dish::where('restaurant_id', '=', $id)->get();
-        return view('restaurant.dashboard', compact('restaurant', 'dishes'));
+        $orders = Order::all()->where('restaurant_id', $id);
+        $orderTotals = 0;
+        foreach ($orders as $order) {
+            $orderTotals += $order->price;
+        }
+        return view('restaurant.dashboard', compact('restaurant', 'dishes', 'orders', 'orderTotals'));
     }
     
     // /**

@@ -13,4 +13,6 @@
         @endauth
     @endforeach
 
+    {{ $dishes->links() }}
+
 @endsection

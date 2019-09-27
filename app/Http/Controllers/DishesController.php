@@ -70,7 +70,7 @@ class DishesController extends Controller
     public function show($id)
     {
         $restaurant = User::where('id', '=', $id)->get();
-        $dishes = Dish::where('restaurant_id', '=', $id)->get();
+        $dishes = Dish::where('restaurant_id', '=', $id)->paginate(5);
         return view('general.dishes', compact('restaurant', 'dishes'));
     }
 
