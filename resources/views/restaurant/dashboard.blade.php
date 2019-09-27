@@ -11,7 +11,10 @@
     <hr>
 
     <h3>Weekly Performance</h3>
-        @for ($i = 0; $i = $12; $i++)
-            
-        @endfor
+    @foreach ($weeklyTotals as $week)
+        <p>Week {{ $now }} of 2019</p>
+        <p>Sales: ${{ $week }}</p>
+        <?php $now-- ?>
+        <hr>
+    @endforeach
 @endsection

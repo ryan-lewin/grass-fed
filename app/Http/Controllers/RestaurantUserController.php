@@ -1,11 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\User;
 use App\Dish;
 use App\Order;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class RestaurantUserController extends Controller
 {
@@ -25,7 +25,21 @@ class RestaurantUserController extends Controller
         foreach ($orders as $order) {
             $orderTotals += $order->price;
         }
-        return view('restaurant.dashboard', compact('restaurant', 'dishes', 'orders', 'orderTotals'));
+        $weeklyTotals = [];
+        $weeklyOrders = Order::all()->groupBy(function($date) {
+            return Carbon::parse($date->created_at)->format('W');
+        });
+        $now = Carbon::now()->weekOfYear;
+        for($i = $now; $i >= $now - 8; $i--){
+            $weekly = 0;
+            $week = $weeklyOrders[$i];
+            foreach ($week as $item) {
+                $weekly += (int)$item->price;
+            }
+            array_push($weeklyTotals, $weekly);
+        }
+
+        return view('restaurant.dashboard', compact('restaurant', 'dishes', 'orders', 'orderTotals', 'weeklyOrders', 'weeklyTotals', 'now'));
     }
     
     // /**
