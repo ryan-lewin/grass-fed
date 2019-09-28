@@ -53,14 +53,25 @@
                             </div>
                         </div>
 
+
+                        <div class="form-group row">
+                            <label class="col-md-4 col-form-label text-md-right" for="exampleFormControlSelect1">{{ __('Confirm Account Type') }}</label>
+                            <div class="col-md-6">
+                                <select class="form-control" id="exampleFormControlSelect1">
+                                        <option value="customer">Customer</option>
+                                        <option value="restaurant">Restaurant</option>
+                                </select>
+                            </div>
+                        </div>
+{{-- 
+
                         <div class="form-group row">
                             <label for="role" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Account Type') }}</label>
-                            <br>
-                            <select name="role" id="role">
+                            <select class='form_control' name="role" id="role">
                                 <option value="customer">Customer</option>
                                 <option value="restaurant">Restaurant</option>
                             </select>
-                        </div>
+                        </div> --}}
 
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>

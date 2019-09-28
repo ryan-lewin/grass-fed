@@ -43,9 +43,9 @@ class DishesController extends Controller
     public function store(Request $request)
     {
         request()->validate([
-            'name' => 'required|unique:dishes',
-            'price' => 'required',
-            'description' => 'required',
+            'name' => 'required|unique:dishes|max:50',
+            'price' => 'required|numeric|min:0',
+            'description' => 'required|max:255',
             'image' => 'required'
         ]);
         $image_store = request()->file('image')->store('images', 'public');
@@ -96,9 +96,9 @@ class DishesController extends Controller
     public function update(Request $request, $id)
     {
         request()->validate([
-            'name' => 'required',
-            'price' => 'required',
-            'description' => 'required',
+            'name' => 'required|max:50',
+            'price' => 'required|numeric|min:0',
+            'description' => 'required|max:255',
         ]);
         $dish = Dish::find($id);
         $dish->name = $request->input('name');
