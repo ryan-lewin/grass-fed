@@ -43,9 +43,7 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ url('restaurant') }}">Who's Cooking</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url('cart') }}">Cart</a>
-                        </li>
+
                         @guest
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -56,6 +54,13 @@
                                 </li>
                             @endif
                         @else 
+                        
+                        @if (Auth::user()->role_name == 'customer')
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url('cart') }}">Cart <span class="badge">({{ count(session('cart')) }})</span> </a>
+                            </li>
+                        @endif
+
                         @if(Auth::user()->role_name == 'restaurant')
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ url('order', Auth::user()->id) }}">Orders</a>
@@ -69,8 +74,6 @@
                                     <a class="dropdown-item" href="{{ url('/dishes/create') }}">Add Dish</a>
                                 </div>
                             </li>
-                        @else
-                        {{-- /ourDishes/{{ Auth::user()->id) }} --}}
                         @endif
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

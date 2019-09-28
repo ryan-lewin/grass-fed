@@ -97,11 +97,13 @@ class DishesController extends Controller
     {
         request()->validate([
             'name' => 'required',
-            'price' => 'required'
+            'price' => 'required',
+            'description' => 'required',
         ]);
         $dish = Dish::find($id);
         $dish->name = $request->input('name');
         $dish->price = $request->input('price');
+        $dish->description = $request->input('description');
         $dish->save();
         return redirect('/ourDishes/' .Auth::user()->id);
     }

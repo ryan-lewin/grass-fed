@@ -1,23 +1,31 @@
 @extends('layouts.app')
 
 @section('content')
-    @if(Auth::user()->role_name == 'restaurant')
-        <h1>{{ $restaurant[0]->name }}</h1>
-
-        @foreach ($dishes as $dish)
-            <p>{{ $dish->name }}</p>
-            <img src="{{ asset('storage/'.$dish->image) }}" alt="product image" >
-            <p>{{ $dish->description }}</p>
-            <p>${{ $dish->price }}</p>
-            <a href="/dishes/{{ $dish->id }}/edit">Update</a>
-            <form method="POST" action="{{ url('dishes', $dish->id) }}">
-                @csrf
-                @method('DELETE')
-                <button type="submit">Delete</button>
-            </form>
-        @endforeach
-        {{ $dishes->links() }}
-    @else
-        <h1>Whoops! Looks like you aren't authorised to be here...</h1>
-    @endif
+    <div class="d-flex flex-column">
+        <div>
+            <h1>{{ $restaurant[0]->name }}</h1>
+        </div>
+        <div class="d-flex flex-wrap justify-content-around">
+            @foreach ($dishes as $dish)
+                    <div class="card" style="width: 16rem;">
+                        <div class="card-body">
+                            <img class="card-img-top" style="padding-bottom: .5rem;" src="{{ asset('storage/'.$dish->image) }}" alt="product image">
+                            <h5 class="card-title">{{ $dish->name }}</h5>
+                            <p class='lead'>${{ number_format((float)$dish->price, 2, '.', '') }}</p>
+                            <div class='d-flex flex-row button-group justify-content-around' role="group" >
+                                <a href="/dishes/{{ $dish->id }}/edit" class='btn btn-primary'>Update</a>
+                                <form method="POST" action="{{ url('dishes', $dish->id) }}">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="btn btn-danger" type="submit">Delete</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+            @endforeach
+        </div>
+        <div>
+            {{ $dishes->links() }}
+        </div>
+    </div>
 @endsection

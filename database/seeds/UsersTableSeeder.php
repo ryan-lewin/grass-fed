@@ -9,7 +9,7 @@ class UsersTableSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+     public function run()
     {
         DB::table('users')->insert([
             'name' => 'Ryan Lewin',
