@@ -1,10 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use Illuminate\Http\Request;
 use App\User;
 use App\Dish;
+use App\OrderDish;
+use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class RestaurantController extends Controller
 {
@@ -21,7 +22,17 @@ class RestaurantController extends Controller
     public function index()
     {
         $restaurants = User::where('role_name', '=', 'restaurant')->get();
-        return view('general.index', compact('restaurants'));
+        $date = Carbon::today()->subDays(30);
+        $dishes = OrderDish::where('created_at', '>=', $date)->get();
+        $popularDishes = $dishes->groupBy('dish_id');
+        $dishNames = [];
+        foreach ($popularDishes as $dish) {
+            $id = $dish->first()->dish_id;
+            $name = Dish::where('id', '=', $id)->get();
+            array_push($dishNames ,$name->first()->name);
+        }
+
+        return view('general.index', compact('restaurants', 'dishNames'));
     }
 
     /**

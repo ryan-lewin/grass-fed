@@ -20,7 +20,7 @@ class RestaurantUserController extends Controller
     {
         $restaurant = User::where('id', '=', $id)->get();
         $dishes = Dish::where('restaurant_id', '=', $id)->get();
-        $orders = Order::all()->where('restaurant_id', $id);
+        $orders = Order::all()->where('restaurant_id', $id)->sortByDesc('created_at');
         $orderTotals = 0;
         foreach ($orders as $order) {
             $orderTotals += $order->price;

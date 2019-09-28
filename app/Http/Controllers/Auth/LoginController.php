@@ -34,6 +34,7 @@ class LoginController extends Controller
      * Check user's role and redirect user based on their role
      * @return 
      */
+
     public function redirectTo()
     {
         $role = Auth::user()->role_name;
@@ -41,6 +42,7 @@ class LoginController extends Controller
         if($role == 'restaurant'){
             return '/restaurant-dashboard/' . $id;
         }
+        // return redirect(session('link'));
         return 'restaurant';
     }
     

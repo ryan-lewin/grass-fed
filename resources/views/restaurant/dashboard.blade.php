@@ -5,8 +5,8 @@
     <h3>Restaurant Overview</h3>
     <p>Total Sales: {{count($orders)}}</p>
     <p>Total Revenue: ${{ $orderTotals }}</p>
-    <p>First Order: {{$orders[0]->created_at->format('F j, Y, g:i a') }}</p>
-    <p>Last Order: {{ $orders[0]->created_at->format('F j, Y, g:i a') }}</p>
+    <p>First Order: {{$orders->last()->created_at->format('F j, Y, g:i a') }}</p>
+    <p>Last Order: {{ $orders->first()->created_at->format('F j, Y, g:i a') }}</p>
 
     <hr>
 
