@@ -67,6 +67,7 @@ class CartController extends Controller
     }
 
     public function purchaseCart($total){
+        $success = 'Thank you for your purchase. Your order is on it\'s way. Please keep an eye on your emails for a receipt.';
         $cart = session()->get('cart');
         $order = new Order;
         $order->order_details = serialize(session('cart'));
@@ -84,6 +85,6 @@ class CartController extends Controller
             $toAdd->save();
         }
         session()->remove('cart');
-        return redirect()->back();
+        return redirect()->back()->with('message', $success);
     }
 }

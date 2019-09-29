@@ -15,16 +15,16 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css?family=Mansalva&display=swap" rel="stylesheet">
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    grassfed
                 </a>
 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -41,7 +41,7 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('restaurant') }}">Who's Cooking</a>
+                            <a class="nav-link" style='color: #fff;' href="{{ url('restaurant') }}">Who's Cooking</a>
                         </li>
 
                         @guest
@@ -57,16 +57,17 @@
                         
                         @if (Auth::user()->role_name == 'customer')
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ url('cart') }}">Cart <span class="badge">({{ count(session('cart')) }})</span> </a>
+                                <a class="nav-link" style='color: #fff;' href="{{ url('cart') }}">Cart</a>  
                             </li>
+                            {{-- <span class="badge">({{ count(session('cart')) }})</span> --}}
                         @endif
 
                         @if(Auth::user()->role_name == 'restaurant')
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ url('order', Auth::user()->id) }}">Orders</a>
+                                <a class="nav-link" style='color: #fff;' href="{{ url('order', Auth::user()->id) }}">Orders</a>
                             </li>
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a id="navbarDropdown" style='color: #fff;' class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     Dishes <span class="caret"></span>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -76,7 +77,7 @@
                             </li>
                         @endif
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" style='color: #fff;' href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 

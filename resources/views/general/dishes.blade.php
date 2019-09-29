@@ -3,7 +3,7 @@
 @section('content')
     <div class="d-flex flex-column">
         <div>
-            <h1>{{ $restaurant[0]->name }}</h1>
+            <h1 class="justify-self-center">{{ $restaurant[0]->name }}</h1>
         </div>
         <div class="d-flex">
             @foreach ($dishes as $dish)

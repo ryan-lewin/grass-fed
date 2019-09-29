@@ -40,12 +40,16 @@ class DishesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+    // 'name' => 'required|unique:dishes,name, NULL,id,restaurant_id,'.\Auth::user()->id,
+
+
     public function store(Request $request)
     {
         request()->validate([
             'name' => 'required|unique:dishes|max:50',
             'price' => 'required|numeric|min:0',
-            'description' => 'required|max:255',
+            'description' => 'required',
             'image' => 'required'
         ]);
         $image_store = request()->file('image')->store('images', 'public');
@@ -96,7 +100,7 @@ class DishesController extends Controller
     public function update(Request $request, $id)
     {
         request()->validate([
-            'name' => 'required|max:50',
+            'name' => 'required|unique:dishes|max:50',
             'price' => 'required|numeric|min:0',
             'description' => 'required|max:255',
         ]);
