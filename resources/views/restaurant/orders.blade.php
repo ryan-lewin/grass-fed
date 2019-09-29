@@ -11,7 +11,6 @@
                     </div>
                     <div class="card-body">
                         <h5 class="card-title">{{ App\User::find($order->customer_id)->name }}</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
                         @foreach ($order_dishes as $dish)
                             <p class="card-text">{{ $dish['name'] }} x {{$dish['quantity']}} : $ {{$dish['price']*$dish['quantity']}}</p>
                         @endforeach

@@ -100,7 +100,7 @@ class DishesController extends Controller
     public function update(Request $request, $id)
     {
         request()->validate([
-            'name' => 'required|unique:dishes|max:50',
+            'name' => 'required|max:50',
             'price' => 'required|numeric|min:0',
             'description' => 'required|max:255',
         ]);

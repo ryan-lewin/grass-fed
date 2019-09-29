@@ -62,7 +62,16 @@
                             {{-- <span class="badge">({{ count(session('cart')) }})</span> --}}
                         @endif
 
+                        @if (Auth::user()->role_name == 'admin')
+                            <li class="nav-item">
+                                <a class="nav-link" style='color: #fff;' href="#">Restaurant Applications</a>
+                            </li>
+                        @endif
+
                         @if(Auth::user()->role_name == 'restaurant')
+                            <li class="nav-item">
+                                <a class="nav-link" style='color: #fff;' href="{{ url('dashboard', Auth::user()->id) }}">Sales Dashboard</a>
+                            </li>
                             <li class="nav-item">
                                 <a class="nav-link" style='color: #fff;' href="{{ url('order', Auth::user()->id) }}">Orders</a>
                             </li>

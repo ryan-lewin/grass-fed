@@ -34,7 +34,7 @@ class UsersTableSeeder extends Seeder
         ]);
         DB::table('users')->insert([
             'name' => 'Hay Gurl plant-based-eats',
-            'email' => 'admin@hargurl.com',
+            'email' => 'admin@haygurl.com',
             'password' => bcrypt('password'),
             'address' => 'Shop 2 34 Coonan Street Indooroopilly QLD 4068',
             'role_name' => 'restaurant'

@@ -17,7 +17,7 @@
                                 <p class='lead'>${{ number_format((float)$dish->price, 2, '.', '') }}</p>
                                 @auth
                                     @if(Auth::user()->role_name == 'customer')
-                                        <a href="{{ url('addToCart/'.$dish->id) }}" class='btn btn-success'>Add to cart</a>
+                                        <a href="{{ url('addToCart/'.$dish->id) }}" class='btn' style="background-color: #015e03; color: #fff;">Add to cart</a>
                                     @endif
                                 @endauth
                             </div>

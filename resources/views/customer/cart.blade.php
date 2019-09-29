@@ -12,8 +12,8 @@
     @if (Auth::user()->role_name == 'customer')
         <div class="d-flex flex-column">
             <div class="card text-center column align-self-center" style="width: 80vw">
-                <div class="card-header">
-                    <h1>Cart</h1>
+                <div class="card-header" style="background-color: #015e03; color: #fff;">
+                    <h1 style="color: #fff;">Cart</h1>
                 </div>
                 @if (session('cart'))
                     <?php $total = 0 ?>
