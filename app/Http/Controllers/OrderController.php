@@ -47,7 +47,6 @@ class OrderController extends Controller
      */
     public function show($id)
     {
-        // dd(Order::all()->customer());
         $orders = Order::all()->where('restaurant_id', $id)->sortByDesc('created_at');
         return view('restaurant.orders', compact('orders'));
     }

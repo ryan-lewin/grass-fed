@@ -43,7 +43,9 @@
                         <li class="nav-item">
                             <a class="nav-link" style='color: #fff;' href="{{ url('restaurant') }}">Who's Cooking</a>
                         </li>
-
+                        <li class="nav-item">
+                            <a class="nav-link" style='color: #fff;' href="{{ url('docs') }}">About</a>
+                        </li>
                         @guest
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>

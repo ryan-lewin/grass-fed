@@ -24,12 +24,9 @@ class RestaurantController extends Controller
         $restaurants = User::where('role_name', '=', 'restaurant')->get();
         $date = Carbon::today()->subDays(30);
         $dishes = OrderDish::where('created_at', '>=', $date)->get();
-        // $popularDishes = $dishes->groupBy('dish_id');
         $popularDishes = OrderDish::select('dish_id')->where('created_at', '>=', $date)->groupBy('dish_id')->orderByRaw('COUNT(*) DESC')->limit(5)->get();
-        // dd($popularDishes);
         $dishNames = [];
         foreach ($popularDishes as $dish) {
-            // $id = $dish->first()->dish_id;
             $name = Dish::where('id', '=', $dish->dish_id)->get();
             array_push($dishNames ,$name->first()->name);
         }

@@ -35,12 +35,14 @@
                         <label for="image">Please upload image file</label>
                         <input class='form-control-file' type="file" name="image">
                     </div>
-                    <button class="btn btn-success" type="submit">Add to menu</button>
+                    <button class="btn" style="background-color: #015E02; color: #fff" type="submit">Add to menu</button>
                 </form>
             </div>
         @else
-            <h1>Sit tight! We are still waiting to approve your account...</h1>
-        @endif
+            <div class="d-flex flex-wrap justify-content-around">
+                <h1>Sit tight! We are still waiting to approve your account...</h1>
+            </div?
+            @endif
     @else
         <h1>Whoops! Looks like you aren't authorised to view this page...</h1>
     @endif

@@ -13,6 +13,10 @@
 
 Route::get('/', 'RestaurantController@index');
 
+Route::get('docs', function () {
+    return view('general.docs');
+});
+
 Auth::routes();
 
 Route::resource('customer', 'CustomerController');

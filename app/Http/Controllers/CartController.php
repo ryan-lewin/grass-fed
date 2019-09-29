@@ -10,10 +10,18 @@ use Illuminate\Http\Request;
 
 class CartController extends Controller
 {
+    
+    /**
+     * Display the cart view.
+     */
     public function cart()
     {
         return view('customer.cart');
     }
+
+    /**
+     * Add selected item to cart - Only allows items from one vendor to be added at a time
+     */
     public function addToCart($id)
     {
         $dish = Dish::find($id);
@@ -51,6 +59,9 @@ class CartController extends Controller
         return redirect()->back();        
     }
     
+    /**
+     * Remove items from cart one at a time
+     */
     public function removeFromCart($id){
         if($id) {
             $cart = session()->get('cart');
@@ -67,6 +78,9 @@ class CartController extends Controller
         }
     }
 
+    /**
+     * Purchase items of cart - Update DB and send success msg to buyer
+     */
     public function purchaseCart($total){
         $cart = session()->get('cart');
         $order = new Order;

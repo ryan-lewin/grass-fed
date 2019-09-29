@@ -40,10 +40,6 @@ class DishesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-
-    // 'name' => 'required|unique:dishes,name, NULL,id,restaurant_id,'.\Auth::user()->id,
-
-
     public function store(Request $request)
     {
         request()->validate([
@@ -62,8 +58,6 @@ class DishesController extends Controller
         $dish->save();
         return redirect('/ourDishes/' .Auth::user()->id);
     }
-
-    // 'address'=>'unique:user_addresses,name,'.$user->id.',user_id'
 
     /**
      * Display the specified resource.
@@ -124,65 +118,4 @@ class DishesController extends Controller
         $dish->delete($dish->id);
         return back();
     }
-
-    // public function cart()
-    // {
-    //     return view('customer.cart');
-    // }
-
-    // public function addToCart($id)
-    // {
-    //     $dish = Dish::find($id);
-    //     $cart = session()->get('cart');
-    //     if(!$cart){
-    //         $cart = [
-    //             $id => [
-    //                 'name' => $dish->name,
-    //                 'quantity' => 1,
-    //                 'price' => $dish->price
-    //             ]
-    //         ];
-    //         session()->put('cart', $cart);
-    //         return redirect()->back();
-    //     }
-    //     if(isset($cart[$id])){
-    //         $cart[$id]['quantity']++;
-    //         session()->put('cart', $cart);
-    //         return redirect()->back();
-    //     }
-    //     $cart[$id] = [
-    //             'name' => $dish->name,
-    //             'quantity' => 1,
-    //             'price' => $dish->price
-    //     ];
-    //     session()->put('cart', $cart);
-    //     return redirect()->back();        
-    // }
-
-    // public function updateCart($quantity)
-    // {
-    //         $cart = session()->get('cart');
- 
-    //         $cart[$request->id]["quantity"] = $request->quantity;
- 
-    //         session()->put('cart', $cart);
- 
-    //         session()->flash('success', 'Cart updated successfully');
-    // }
-
-    // public function removeFromCart($id){
-    //     if($id) {
-    //         $cart = session()->get('cart');
-    //         if(isset($cart[$id])) {
-    //             if($cart[$id]['quantity'] > 1){
-    //                 $cart[$id]['quantity']--;
-    //                 session()->put('cart', $cart);
-    //             } else{
-    //                 unset($cart[$id]);
-    //                 session()->put('cart', $cart);
-    //             }
-    //         }
-    //         return redirect()->back(); 
-    //     }
-    // }
 }

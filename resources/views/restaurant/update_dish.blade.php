@@ -31,7 +31,7 @@
                     <label for="description">Description</label>
                     <textarea class='form-control' name="description">{{ $dish->description }}"</textarea>
                 </div>
-                <button class="btn btn-success" type="submit">Update dish</button>
+                <button class="btn" style="background-color: #015E02; color: #fff" type="submit">Update dish</button>
             </form>
         </div>
     @else
