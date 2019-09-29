@@ -29,4 +29,9 @@ Route::get('/addToCart/{id}', 'CartController@addToCart');
 Route::get('/purchaseCart/{total}', 'CartController@purchaseCart');
 Route::delete('/removeFromCart/{id}', 'CartController@removeFromCart');
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/applications', 'AdminController@applications');
+Route::get('/approve/{id}', 'AdminController@approve');
+
+// Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/home', 'RestaurantController@index')->name('home');

@@ -3,9 +3,9 @@
 @section('content')
     <div class="d-flex flex-column">
         <div>
-            <h1 class="justify-self-center">{{ $restaurant[0]->name }}</h1>
+            <h1 class='d-flex justify-content-around'>{{ $restaurant[0]->name }}</h1>
         </div>
-        <div class="d-flex">
+        <div class="d-flex flex-wrap justify-content-around">
             @foreach ($dishes as $dish)
                 <div class="row">
                     <div class="">
@@ -26,7 +26,7 @@
                 </div>
             @endforeach
         </div>
-        <div>
+        <div class="d-flex justify-content-around" style="margin-top: 1rem;">
             {{ $dishes->links() }}
         </div>
     </div>

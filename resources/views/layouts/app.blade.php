@@ -64,7 +64,7 @@
 
                         @if (Auth::user()->role_name == 'admin')
                             <li class="nav-item">
-                                <a class="nav-link" style='color: #fff;' href="#">Restaurant Applications</a>
+                                <a class="nav-link" style='color: #fff;' href="{{ ('applications') }}">Restaurant Applications</a>
                             </li>
                         @endif
 

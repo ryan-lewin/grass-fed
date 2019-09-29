@@ -30,14 +30,16 @@ class UsersTableSeeder extends Seeder
             'email' => 'admin@greencanteen.com',
             'password' => bcrypt('password'),
             'address' => '12/68 Manning Street South Brisbane 4101',
-            'role_name' => 'restaurant'
+            'role_name' => 'restaurant',
+            'approved' => 'true'
         ]);
         DB::table('users')->insert([
             'name' => 'Hay Gurl plant-based-eats',
             'email' => 'admin@haygurl.com',
             'password' => bcrypt('password'),
             'address' => 'Shop 2 34 Coonan Street Indooroopilly QLD 4068',
-            'role_name' => 'restaurant'
+            'role_name' => 'restaurant',
+            'approved' => 'true'
         ]);
         DB::table('users')->insert([
             'name' => 'Admin',

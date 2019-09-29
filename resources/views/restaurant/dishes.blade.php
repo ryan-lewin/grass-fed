@@ -24,7 +24,7 @@
                     </div>
             @endforeach
         </div>
-        <div>
+        <div class="d-flex justify-content-around" style="margin-top: 2rem;">
             {{ $dishes->links() }}
         </div>
     </div>

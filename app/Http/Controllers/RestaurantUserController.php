@@ -31,12 +31,14 @@ class RestaurantUserController extends Controller
         });
         $date = Carbon::today()->subDays(30);
         $now = Carbon::now()->weekOfYear;
-        for($i = $now; $i >= $now - 8; $i--){
+        for($i = $now; $i > $now - 12; $i--){
             $weekly = 0;
-            $week = $weeklyOrders[$i];
-            foreach ($week as $item) {
-                $weekly += (int)$item->price;
-            }
+            if(isset($weeklyOrders[$i])){
+                $week = $weeklyOrders[$i];
+                foreach ($week as $item) {
+                    $weekly += (int)$item->price;
+                }
+            }   
             array_push($weeklyTotals, $weekly);
         }
 
