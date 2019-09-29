@@ -18,13 +18,10 @@
         <div>
             <h3>Project Status</h3>
             <p>
-                I was able to complete all tasks except making the dish name unique only for that restaurant, not accross restaurants. I si ply overlooked this
-                requirement and by the time I relaised it was too late to implement.
+                I was able to complete all tasks except making the dish name unique only for that restaurant, not across restaurants. I simply overlooked this requirement and by the time I realised it was too late to implement.
             </p>
             <p>
-                The project was really a lot of fun and I've learned a lot about laravel. I didn's have too much trouble with the requirements but have been able to identify
-                areas I would like to learn more in depth. On the of these areas is models. I am extremely interested in learning more about how to make them work well
-                in my projects, but due to time constraints I've had to do what I can with this project. 
+                The project was really a lot of fun and I've learned a lot about Laravel. I didn’t have too much trouble with the requirements but have been able to identify areas I would like to learn more in depth. On the of these areas is models. I am extremely interested in learning more about how to make them work well in my projects, but due to time constraints I've had to do what I can with this project.
             </p>
             <ul>
                 <li><strike> Users can register with this website. When registering, users must provide their name, email,
