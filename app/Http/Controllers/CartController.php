@@ -37,7 +37,8 @@ class CartController extends Controller
             return redirect()->back();
         }
         if(reset($cart)['restaurant_id'] != $dish->restaurant_id){
-            dd('error');
+            $error = "Sorry, you may only purchase items from one restaurant at a time.";
+            return redirect()->back()->with('message', $error);
         }
         $cart[$id] = [
                 'name' => $dish->name,

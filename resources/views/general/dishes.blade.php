@@ -1,6 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
+    @if(session()->has('message'))
+        <div class="alert alert-danger alert-dismissible fade show">
+            {{ session()->get('message') }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    @endif
     <div class="d-flex flex-column">
         <div>
             <h1 class='d-flex justify-content-around'>{{ $restaurant[0]->name }}</h1>
